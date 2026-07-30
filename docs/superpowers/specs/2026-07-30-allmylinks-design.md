@@ -27,10 +27,11 @@ A single, mobile-first, dark-themed personal hub page for Andrés Morales. Repla
 
 ## 4. Stack
 
-- **Next.js 15 App Router** (TypeScript, React Server Components).
-- **Tailwind CSS** — config and design tokens (palette, font family, radius) imported from `andresmorales-nextjs/tailwind.config.ts` for visual consistency with the main portfolio.
+- **Next.js 15.5.x App Router** (TypeScript, React Server Components) — matches `andresmorales-nextjs`.
+- **React 19.x** — matches portfolio.
+- **Tailwind CSS 3.4.x** (specifically 3.4.14 to match portfolio) — config and design tokens (palette, font family, radius) imported from `andresmorales-nextjs/tailwind.config.ts` for visual consistency. Tailwind 4 is deliberately not used here so the config file can be lifted verbatim.
 - **`lucide-react@0.460.0`** (same version already used by `mecca-store`) for link icons (tree-shakeable, ~16 kB per icon).
-- No additional runtime dependencies.
+- No additional runtime dependencies. OG image generated via `next/og`'s `ImageResponse` (built into Next 15, no extra install).
 
 ## 5. Architecture
 
@@ -61,7 +62,7 @@ All components live under `src/app/` (App Router convention):
 - `src/components/Hero.tsx` — avatar (gradient ring), name, one-line bio. Server Component.
 - `src/components/LinkList.tsx` — maps `links[]` to `<LinkCard>`s with staggered fade-up animation via CSS `animation-delay`.
 - `src/components/LinkCard.tsx` — server-rendered `<a>` with icon, label, optional `highlight` accent. Opens external links in new tab with `rel="noopener noreferrer"`.
-- `src/components/og-image.tsx` (or `opengraph-image.tsx`) — Next.js dynamic OG image route (1200×630). Renders avatar + name over a gradient using the brand palette and `@vercel/og` or an inline SVG.
+- `src/app/opengraph-image.tsx` — Next.js dynamic OG image route (1200×630). Renders avatar + name over the brand-palette gradient using `next/og`'s `ImageResponse` (built into Next 15).
 - `src/data/links.ts` — typed `links` array + `profile` object (data only, see §7).
 - `public/avatar.jpg` — square profile photo, ≤256 kB. Reused in the hero and inside the OG image.
 - `public/favicon.ico`, `public/apple-touch-icon.png` — small set of brand-consistent icons.
