@@ -11,6 +11,7 @@
   body {
     background-color: theme('colors.secondary');
     color: theme('colors.primary');
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
