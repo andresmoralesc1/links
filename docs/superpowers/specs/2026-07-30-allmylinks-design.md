@@ -29,7 +29,7 @@ A single, mobile-first, dark-themed personal hub page for Andrés Morales. Repla
 
 - **Next.js 15 App Router** (TypeScript, React Server Components).
 - **Tailwind CSS** — config and design tokens (palette, font family, radius) imported from `andresmorales-nextjs/tailwind.config.ts` for visual consistency with the main portfolio.
-- **`lucide-react`** for link icons (tree-shakeable, ~16 kB per icon).
+- **`lucide-react@0.460.0`** (same version already used by `mecca-store`) for link icons (tree-shakeable, ~16 kB per icon).
 - No additional runtime dependencies.
 
 ## 5. Architecture
@@ -136,13 +136,45 @@ OG image (`opengraph-image.tsx`) is generated at build time using the brand pale
 
 - **Repo path:** `/home/telchar/allmylinks` (initialized via `git init` during spec phase).
 - **Runtime port:** `127.0.0.1:3002`.
-- **Run pattern:** bare `next start`, matching the existing portfolio pattern (`start-portfolio.sh`). No Docker, no DB. Process supervised via the existing tmux/pm2 setup the user runs for the portfolio.
-- **`start-allmylinks.sh`:** `npm ci && npm run build && PORT=3002 HOST=127.0.0.1 next start`. Idempotent; safe to re-run.
-- **`redeploy-allmylinks.sh`:** `git pull --rebase && bash start-allmylinks.sh`. Bumps the running process.
-- **Caddy vhost** appended to `/etc/caddy/Caddyfile`:
+- **Run pattern:** bare `next start`, matching the existing portfolio pattern (`start-portfolio.sh`). No Docker, no DB. Log output appended to `/home/telchar/logs/allmylinks.out` so the same `tail -f` workflow applies.
+- **`start-allmylinks.sh`** (mirrors `start-portfolio.sh`):
+  ```sh
+  #!/bin/bash
+  set -e
+  cd /home/telchar/allmylinks
+  export NODE_ENV=production
+  mkdir -p /home/telchar/logs
+  exec ./node_modules/.bin/next start -p 3002
+  ```
+  Launched as `nohup ./start-allmylinks.sh &` from the repo root after `npm ci && npm run build`. Idempotent; safe to re-run after re-install.
+- **`redeploy-allmylinks.sh`:**
+  ```sh
+  #!/bin/bash
+  set -e
+  cd /home/telchar/allmylinks
+  git pull --rebase
+  npm ci
+  npm run build
+  pkill -f start-allmylinks.sh || true
+  nohup ./start-allmylinks.sh >>/home/telchar/logs/allmylinks.out 2>&1 &
+  ```
+- **Caddy vhost** appended to `/etc/caddy/Caddyfile` (mirrors the existing `shop.andresmorales.com.co` block):
   ```
   allmylinks.andresmorales.com.co {
-      reverse_proxy 127.0.0.1:3002
+      encode zstd gzip
+
+      reverse_proxy 127.0.0.1:3002 {
+          header_up Host {host}
+          header_up X-Real-IP {remote_host}
+          header_up X-Forwarded-For {remote_host}
+          header_up X-Forwarded-Proto {scheme}
+          header_down -Server
+          transport http {
+              dial_timeout 10s
+              response_header_timeout 30s
+              read_timeout 60s
+          }
+      }
   }
   ```
   Then reload: `sudo systemctl reload caddy` (or `caddy reload` if running as a service).
