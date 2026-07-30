@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    apple: '/avatar.png',
+    apple: '/avatar.jpg',
   },
   robots: { index: true, follow: true },
 };

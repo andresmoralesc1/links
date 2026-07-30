@@ -41,7 +41,7 @@ export type LinkItem = {
 export const profile: Profile = {
   name: 'Andrés Morales',
   bio: 'Desarrollador & emprendedor digital',
-  avatar: '/avatar.png',
+  avatar: '/avatar.jpg',
 };
 
 export const links: LinkItem[] = [
