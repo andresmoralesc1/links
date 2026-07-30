@@ -26,23 +26,55 @@ export default async function OpengraphImage() {
           justifyContent: 'center',
           alignItems: 'flex-start',
           padding: '80px',
-          backgroundColor: '#1E1810',
+          backgroundColor: '#F8F5F4',
           backgroundImage:
-            'radial-gradient(ellipse 60% 50% at 30% 30%, rgba(249,110,3,0.30) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(75,79,88,0.30) 0%, transparent 60%)',
-          color: '#fff',
+            'radial-gradient(ellipse 60% 50% at 30% 30%, rgba(249,110,3,0.20) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(75,79,88,0.10) 0%, transparent 60%)',
+          color: '#1E1810',
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ display: 'flex', fontSize: 32, opacity: 0.6, marginBottom: 8, fontWeight: 400 }}>
+        <div
+          style={{
+            display: 'flex',
+            width: 96,
+            height: 96,
+            borderRadius: 9999,
+            border: '2px solid #f96e03',
+            backgroundColor: '#fff',
+            marginBottom: 32,
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 48,
+            fontWeight: 700,
+          }}
+        >
+          {profile.name
+            .split(' ')
+            .map((w) => w[0])
+            .slice(0, 2)
+            .join('')}
+        </div>
+        <div style={{ display: 'flex', fontSize: 32, opacity: 0.55, marginBottom: 8, fontWeight: 400 }}>
           @{handle}
         </div>
         <div style={{ display: 'flex', fontSize: 88, fontWeight: 600, lineHeight: 1.05, letterSpacing: '-0.02em' }}>
           {profile.name}
         </div>
-        <div style={{ display: 'flex', fontSize: 36, marginTop: 24, maxWidth: 900, opacity: 0.85, fontWeight: 400 }}>
+        <div style={{ display: 'flex', fontSize: 36, marginTop: 24, maxWidth: 900, opacity: 0.75, fontWeight: 400 }}>
           {profile.bio}
         </div>
-        <div style={{ display: 'flex', fontSize: 28, marginTop: 40, opacity: 0.5 }}>
+        <div
+          style={{
+            display: 'flex',
+            fontSize: 24,
+            marginTop: 40,
+            padding: '8px 16px',
+            borderRadius: 9999,
+            backgroundColor: '#f96e03',
+            color: '#1E1810',
+            fontWeight: 600,
+          }}
+        >
           allmylinks.andresmorales.com.co
         </div>
       </div>

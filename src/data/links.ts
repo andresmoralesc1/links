@@ -1,13 +1,29 @@
 import {
-  Briefcase,
   ShoppingBag,
-  MapPin,
-  Workflow,
-  Linkedin,
-  MessageCircle,
   Mail,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+
+/**
+ * Each link is rendered with one of two icon sources:
+ * - `icon.kind === 'img'` — a public file under /brands or /icons. Used for
+ *   brand marks where we have the asset (Portfolio, Barriotech, n8n, etc.).
+ * - `icon.kind === 'lucide'` — a lucide-react component. Used as a fallback
+ *   when we don't have a brand mark (e.g. generic shopping bag for Tienda
+ *   MECCA, envelope for Email).
+ */
+export type BrandIcon = {
+  kind: 'img';
+  src: string;
+  alt?: string;
+};
+
+export type LucideIconRef = {
+  kind: 'lucide';
+  Icon: LucideIcon;
+};
+
+export type LinkIcon = BrandIcon | LucideIconRef;
 
 export type Profile = {
   name: string;
@@ -18,22 +34,51 @@ export type Profile = {
 export type LinkItem = {
   label: string;
   url: string;
-  icon: LucideIcon;
+  icon: LinkIcon;
   highlight?: boolean;
 };
 
 export const profile: Profile = {
   name: 'Andrés Morales',
   bio: 'Desarrollador & emprendedor digital',
-  avatar: '/avatar.jpg',
+  avatar: '/avatar.png',
 };
 
 export const links: LinkItem[] = [
-  { label: 'Portafolio',       url: 'https://andresmorales.com.co',                 icon: Briefcase,    highlight: true  },
-  { label: 'Tienda MECCA',     url: 'https://shop.andresmorales.com.co',            icon: ShoppingBag                     },
-  { label: 'Barriotech',       url: 'https://barriotech.com.co',                    icon: MapPin                          },
-  { label: 'Automatizaciones', url: 'https://n8n.andresmorales.com.co',             icon: Workflow                        },
-  { label: 'LinkedIn',         url: 'https://www.linkedin.com/in/andresmoralesc1/', icon: Linkedin                        },
-  { label: 'WhatsApp',         url: 'https://wa.me/573245425387',                   icon: MessageCircle                   },
-  { label: 'Email',            url: 'mailto:info@andresmorales.com.co',             icon: Mail                            },
+  {
+    label: 'Portafolio',
+    url: 'https://andresmorales.com.co',
+    icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Andrés Morales' },
+    highlight: true,
+  },
+  {
+    label: 'Tienda MECCA',
+    url: 'https://shop.andresmorales.com.co',
+    icon: { kind: 'lucide', Icon: ShoppingBag },
+  },
+  {
+    label: 'Barriotech',
+    url: 'https://barriotech.com.co',
+    icon: { kind: 'img', src: '/brands/barriotech.png', alt: 'Barriotech' },
+  },
+  {
+    label: 'Automatizaciones',
+    url: 'https://n8n.andresmorales.com.co',
+    icon: { kind: 'img', src: '/brands/n8n.svg', alt: 'n8n' },
+  },
+  {
+    label: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/andresmoralesc1/',
+    icon: { kind: 'img', src: '/brands/linkedin.svg', alt: 'LinkedIn' },
+  },
+  {
+    label: 'WhatsApp',
+    url: 'https://wa.me/573245425387',
+    icon: { kind: 'img', src: '/brands/whatsapp.svg', alt: 'WhatsApp' },
+  },
+  {
+    label: 'Email',
+    url: 'mailto:info@andresmorales.com.co',
+    icon: { kind: 'lucide', Icon: Mail },
+  },
 ];
