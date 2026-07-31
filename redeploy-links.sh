@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-cd /home/telchar/allmylinks
+cd /home/telchar/links
 git pull --rebase
 npm ci
 npm run build
