@@ -75,7 +75,7 @@ export default async function OpengraphImage() {
             fontWeight: 600,
           }}
         >
-          allmylinks.andresmorales.com.co
+          links.andresmorales.com.co
         </div>
       </div>
     ),

@@ -6,7 +6,7 @@ import { profile } from '@/data/links';
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://allmylinks.andresmorales.com.co'),
+  metadataBase: new URL('https://links.andresmorales.com.co'),
   title: `${profile.name} — Links`,
   description: profile.bio,
   applicationName: profile.name,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: profile.bio,
     siteName: profile.name,
     locale: 'es_CO',
-    url: 'https://allmylinks.andresmorales.com.co',
+    url: 'https://links.andresmorales.com.co',
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: profile.name }],
   },
   twitter: {
