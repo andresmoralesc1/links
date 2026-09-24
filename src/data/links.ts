@@ -47,7 +47,7 @@ export const profile: Profile = {
 export const links: LinkItem[] = [
   {
     label: 'Portafolio',
-    url: 'https://andresmorales.com.co',
+    url: 'https://andresmorales.com.co/portfolio',
     icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Andrés Morales' },
     highlight: true,
   },
