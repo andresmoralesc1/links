@@ -1,5 +1,5 @@
 import {
-  ShoppingBag,
+  Users,
   Mail,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -9,8 +9,8 @@ import type { LucideIcon } from 'lucide-react';
  * - `icon.kind === 'img'` — a public file under /brands or /icons. Used for
  *   brand marks where we have the asset (Portfolio, Barriotech, n8n, etc.).
  * - `icon.kind === 'lucide'` — a lucide-react component. Used as a fallback
- *   when we don't have a brand mark (e.g. generic shopping bag for Tienda
- *   MECCA, envelope for Email).
+ *   when we don't have a brand mark (e.g. generic users glyph for El Gato
+ *   Colectivo, envelope for Email).
  */
 export type BrandIcon = {
   kind: 'img';
@@ -52,9 +52,9 @@ export const links: LinkItem[] = [
     highlight: true,
   },
   {
-    label: 'Tienda MECCA',
-    url: 'https://shop.andresmorales.com.co',
-    icon: { kind: 'lucide', Icon: ShoppingBag },
+    label: 'El Gato Colectivo',
+    url: 'https://gato.andresmorales.com.co',
+    icon: { kind: 'lucide', Icon: Users },
   },
   {
     label: 'Barriotech',
