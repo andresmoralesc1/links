@@ -2,7 +2,7 @@ import {
   Cat,
   Globe,
   Mail,
-  NotebookPen,
+  Sparkles,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { MessageKey } from '@/i18n/messages';
@@ -70,7 +70,7 @@ export const links: LinkItem[] = [
   {
     labelKey: 'briefLabel',
     url: '/brief',
-    icon: { kind: 'lucide', Icon: NotebookPen },
+    icon: { kind: 'lucide', Icon: Sparkles },
     highlight: true,
   },
   {

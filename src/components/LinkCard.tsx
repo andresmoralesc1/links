@@ -22,27 +22,36 @@ export function LinkCard({ item, index }: Props) {
   // CTA passes WCAG AA (white on #25D366 was 1.98:1, fails AA). Brand icon
   // is monochrome black from simpleicons — invert to white in the dark-text
   // variant so it stays legible against the green fill.
+  // Highlight = primary conversion CTA. Kept on a white card (per design
+  // preference) with an accent ring + shadow to differentiate it from the
+  // default cards and from the WhatsApp green fill above.
   const toneClass = item.highlight
-    ? 'bg-accent text-secondary border-transparent hover:bg-accent/90 focus-visible:bg-accent/90'
+    ? 'bg-white dark:bg-[#25201c] text-secondary dark:text-[#F8F5F4] border-2 border-accent ' +
+      'shadow-[0_4px_14px_-4px_rgba(249,110,3,0.35)] ' +
+      'hover:shadow-[0_8px_20px_-4px_rgba(249,110,3,0.55)] hover:bg-accent/[0.04] ' +
+      'focus-visible:bg-accent/[0.04]'
     : item.whatsapp
       ? 'bg-[#25D366] text-secondary border-transparent hover:bg-[#1ebe57] focus-visible:bg-[#1ebe57]'
       : 'bg-white dark:bg-[#25201c] text-secondary dark:text-[#F8F5F4] border-black/10 dark:border-white/10 hover:border-accent/40 hover:bg-accent/[0.02] focus-visible:border-accent/60';
 
   const iconBgClass = item.highlight
-    ? 'bg-secondary/10'
+    ? 'bg-accent/12 dark:bg-accent/20'
     : item.whatsapp
       ? 'bg-secondary/15'
       : 'bg-accent/8 dark:bg-accent/15';
 
-  const iconFilter = item.highlight
-    ? ''
-    : item.whatsapp
-      ? '[filter:brightness(0)_invert(1)]' // invert black SVG → white on green
-      : '';
+  // Brand icons are simpleicons-monochrome-black; only the whatsapp card
+  // (dark text on bright green) needs them inverted to stay legible. The
+  // highlight keeps its native black icons against the accent-tinted inner bg.
+  const iconFilter = item.whatsapp
+    ? '[filter:brightness(0)_invert(1)]'
+    : '';
 
-  const arrowClass = item.highlight || item.whatsapp
-    ? 'opacity-70'
-    : 'opacity-40';
+  const arrowClass = item.highlight
+    ? 'opacity-80'
+    : item.whatsapp
+      ? 'opacity-70'
+      : 'opacity-40';
 
   const inner = (
     <>
@@ -55,7 +64,7 @@ export function LinkCard({ item, index }: Props) {
         {item.icon.kind === 'img' ? (
           // Brand icon (SVG/PNG from /public). simpleicons SVGs ship as
           // monochrome black, so the whatsapp variant inverts them so they
-          // stay legible against the green fill.
+          // stay legible against the green fill. Highlight stays default.
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={item.icon.src}
@@ -65,7 +74,14 @@ export function LinkCard({ item, index }: Props) {
             className={`w-6 h-6 object-contain ${iconFilter}`}
           />
         ) : (
-          <item.icon.Icon className="w-5 h-5 text-accent" aria-hidden="true" />
+          <item.icon.Icon
+            className={
+              item.highlight
+                ? 'w-5 h-5 text-accent'
+                : 'w-5 h-5 text-accent'
+            }
+            aria-hidden="true"
+          />
         )}
       </span>
       <span className="font-medium text-[15px] tracking-tight">{label}</span>
