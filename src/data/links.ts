@@ -1,6 +1,8 @@
 import {
   Cat,
+  Globe,
   Mail,
+  NotebookPen,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -47,21 +49,26 @@ export const profile: Profile = {
 
 export const links: LinkItem[] = [
   {
-    label: 'Ver Casos & Automatizaciones',
-    url: 'https://andresmorales.com.co/portfolio',
-    icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Andrés Morales' },
-    highlight: true,
-  },
-  {
     label: 'Hablar por WhatsApp',
     url: 'https://wa.me/573245425387?text=Hola%20Andr%C3%A9s%2C%20vi%20tu%20QR%20y...',
     icon: { kind: 'img', src: '/brands/whatsapp.svg', alt: 'WhatsApp' },
     whatsapp: true,
   },
   {
-    label: 'Automatizaciones',
-    url: 'https://n8n.andresmorales.com.co',
-    icon: { kind: 'img', src: '/brands/n8n.svg', alt: 'n8n' },
+    label: 'andresmorales.com.co',
+    url: 'https://andresmorales.com.co',
+    icon: { kind: 'lucide', Icon: Globe },
+  },
+  {
+    label: 'Iniciar Proyecto (Brief)',
+    url: '/brief',
+    icon: { kind: 'lucide', Icon: NotebookPen },
+    highlight: true,
+  },
+  {
+    label: 'Portafolio',
+    url: 'https://andresmorales.com.co/portfolio',
+    icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Portafolio' },
   },
   {
     label: 'El Gato Colectivo',
@@ -82,5 +89,15 @@ export const links: LinkItem[] = [
     label: 'Email',
     url: 'mailto:info@andresmorales.com.co',
     icon: { kind: 'lucide', Icon: Mail },
+  },
+  {
+    label: 'Instagram',
+    url: 'https://www.instagram.com/andres_morales_automation',
+    icon: { kind: 'img', src: '/brands/instagram.svg', alt: 'Instagram' },
+  },
+  {
+    label: 'Facebook',
+    url: 'https://www.facebook.com/andresmoralesautomation',
+    icon: { kind: 'img', src: '/brands/facebook.svg', alt: 'Facebook' },
   },
 ];
