@@ -1,6 +1,4 @@
 import {
-  Briefcase,
-  Globe,
   Mail,
   Sparkles,
 } from 'lucide-react';
@@ -65,7 +63,7 @@ export const links: LinkItem[] = [
   {
     labelKey: 'landingLabel',
     url: `https://andresmorales.com.co${UTM}`,
-    icon: { kind: 'lucide', Icon: Globe },
+    icon: { kind: 'img', src: '/brands/andresmorales.png', alt: 'Andrés Morales' },
   },
   {
     labelKey: 'briefLabel',
@@ -76,7 +74,7 @@ export const links: LinkItem[] = [
   {
     labelKey: 'portfolioLabel',
     url: `https://andresmorales.com.co/portfolio${UTM}`,
-    icon: { kind: 'lucide', Icon: Briefcase },
+    icon: { kind: 'img', src: '/brands/andresmorales.png', alt: 'Portafolio' },
   },
   {
     labelKey: 'gatoLabel',
