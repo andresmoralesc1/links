@@ -1,10 +1,16 @@
 import { ImageResponse } from 'next/og';
 import { profile } from '@/data/links';
+import { messages, defaultLocale } from '@/i18n/messages';
 
 export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = `${profile.name} — Links`;
+
+const m = messages[defaultLocale];
+const name = m[profile.nameKey];
+const bio = m[profile.bioKey];
+
+export const alt = `${name} — Links`;
 
 export default async function OpengraphImage() {
   // Inter font fetch disabled: the gstatic CDN URL hash used here (v18) now
@@ -13,7 +19,7 @@ export default async function OpengraphImage() {
   // OG image accepts the OS sans-serif fallback to keep the route stable.
   const fonts = undefined;
 
-  const handle = profile.name.split(' ')[0].toLowerCase();
+  const handle = name.split(' ')[0].toLowerCase();
 
   return new ImageResponse(
     (
@@ -48,7 +54,7 @@ export default async function OpengraphImage() {
             fontWeight: 700,
           }}
         >
-          {profile.name
+          {name
             .split(' ')
             .map((w) => w[0])
             .slice(0, 2)
@@ -58,10 +64,10 @@ export default async function OpengraphImage() {
           @{handle}
         </div>
         <div style={{ display: 'flex', fontSize: 88, fontWeight: 600, lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-          {profile.name}
+          {name}
         </div>
         <div style={{ display: 'flex', fontSize: 36, marginTop: 24, maxWidth: 900, opacity: 0.75, fontWeight: 400 }}>
-          {profile.bio}
+          {bio}
         </div>
         <div
           style={{
