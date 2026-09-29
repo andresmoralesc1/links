@@ -3,6 +3,7 @@ import {
   Cat,
   Globe,
   Mail,
+  MapPin,
   Sparkles,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -87,7 +88,7 @@ export const links: LinkItem[] = [
   {
     labelKey: 'barriotechLabel',
     url: `https://barriotech.com.co${UTM}`,
-    icon: { kind: 'img', src: '/brands/barriotech.png', alt: 'Barriotech' },
+    icon: { kind: 'lucide', Icon: MapPin },
   },
   {
     labelKey: 'linkedinLabel',
