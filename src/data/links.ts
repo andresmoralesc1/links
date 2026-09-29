@@ -1,6 +1,5 @@
 import {
   Mail,
-  Sparkles,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { MessageKey } from '@/i18n/messages';
@@ -68,7 +67,7 @@ export const links: LinkItem[] = [
   {
     labelKey: 'briefLabel',
     url: '/brief',
-    icon: { kind: 'lucide', Icon: Sparkles },
+    icon: { kind: 'img', src: '/brands/andresmorales.png', alt: 'Iniciar Proyecto' },
     highlight: true,
   },
   {
