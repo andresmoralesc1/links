@@ -1,8 +1,10 @@
 'use client';
 
 import { profile } from '@/data/links';
+import { useLocale } from '@/i18n/LocaleProvider';
 
 export function Hero() {
+  const { t } = useLocale();
   return (
     <header className="flex flex-col items-center text-center mb-8">
       <div className="relative w-24 h-24 mb-5">
@@ -13,12 +15,12 @@ export function Hero() {
           <div className="w-full h-full rounded-full bg-background" />
         </div>
         <div className="absolute inset-[2px] rounded-full overflow-hidden">
-          {/* Avatar from /public/avatar.png. Hidden on missing/404 so the
+          {/* Avatar from /public/avatar.jpg. Hidden on missing/404 so the
               ring stays as the placeholder. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={profile.avatar}
-            alt={profile.name}
+            alt={t(profile.nameKey)}
             width={96}
             height={96}
             className="w-full h-full object-cover"
@@ -29,9 +31,9 @@ export function Hero() {
         </div>
       </div>
       <h1 className="text-2xl font-bold tracking-tight text-secondary">
-        {profile.name}
+        {t(profile.nameKey)}
       </h1>
-      <p className="mt-1.5 text-sm text-secondary/70">{profile.bio}</p>
+      <p className="mt-1.5 text-sm text-secondary/70">{t(profile.bioKey)}</p>
     </header>
   );
 }

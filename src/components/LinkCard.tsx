@@ -1,4 +1,7 @@
+'use client';
+
 import type { LinkItem } from '@/data/links';
+import { useLocale } from '@/i18n/LocaleProvider';
 import type { CSSProperties } from 'react';
 
 type Props = {
@@ -7,7 +10,9 @@ type Props = {
 };
 
 export function LinkCard({ item, index }: Props) {
+  const { t } = useLocale();
   const isExternal = item.url.startsWith('http');
+  const label = t(item.labelKey);
   const animationStyle: CSSProperties & Record<string, string | number> = {
     '--i': index,
   };
@@ -17,7 +22,7 @@ export function LinkCard({ item, index }: Props) {
       href={item.url}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      aria-label={item.label}
+      aria-label={label}
       className={
         'fade-up group flex items-center gap-3 w-full min-h-[60px] px-5 ' +
         'rounded-2xl border transition-[transform,box-shadow,background-color,border-color] duration-200 ' +
@@ -48,7 +53,7 @@ export function LinkCard({ item, index }: Props) {
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={item.icon.src}
-            alt={item.icon.alt ?? item.label}
+            alt={item.icon.alt ?? label}
             width={24}
             height={24}
             className="w-6 h-6 object-contain"
@@ -57,7 +62,7 @@ export function LinkCard({ item, index }: Props) {
           <item.icon.Icon className="w-5 h-5 text-accent" aria-hidden="true" />
         )}
       </span>
-      <span className="font-medium text-[15px] tracking-tight">{item.label}</span>
+      <span className="font-medium text-[15px] tracking-tight">{label}</span>
       <svg
         className="ml-auto w-4 h-4 opacity-40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:opacity-80"
         viewBox="0 0 24 24"

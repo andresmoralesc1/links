@@ -5,6 +5,7 @@ import {
   NotebookPen,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import type { MessageKey } from '@/i18n/messages';
 
 /**
  * Each link is rendered with one of two icon sources:
@@ -28,13 +29,13 @@ export type LucideIconRef = {
 export type LinkIcon = BrandIcon | LucideIconRef;
 
 export type Profile = {
-  name: string;
-  bio: string;
+  nameKey: MessageKey;
+  bioKey: MessageKey;
   avatar: string;
 };
 
 export type LinkItem = {
-  label: string;
+  labelKey: MessageKey;
   url: string;
   icon: LinkIcon;
   highlight?: boolean;
@@ -42,61 +43,61 @@ export type LinkItem = {
 };
 
 export const profile: Profile = {
-  name: 'Andrés Morales',
-  bio: 'Automatización de procesos e IA para e-commerce',
+  nameKey: 'profileName',
+  bioKey: 'bio',
   avatar: '/avatar.jpg',
 };
 
 export const links: LinkItem[] = [
   {
-    label: 'Hablar por WhatsApp',
+    labelKey: 'whatsappLabel',
     url: 'https://wa.me/573245425387?text=Hola%20Andr%C3%A9s%2C%20vi%20tu%20QR%20y...',
     icon: { kind: 'img', src: '/brands/whatsapp.svg', alt: 'WhatsApp' },
     whatsapp: true,
   },
   {
-    label: 'andresmorales.com.co',
+    labelKey: 'landingLabel',
     url: 'https://andresmorales.com.co',
     icon: { kind: 'lucide', Icon: Globe },
   },
   {
-    label: 'Iniciar Proyecto (Brief)',
+    labelKey: 'briefLabel',
     url: '/brief',
     icon: { kind: 'lucide', Icon: NotebookPen },
     highlight: true,
   },
   {
-    label: 'Portafolio',
+    labelKey: 'portfolioLabel',
     url: 'https://andresmorales.com.co/portfolio',
     icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Portafolio' },
   },
   {
-    label: 'El Gato Colectivo',
+    labelKey: 'gatoLabel',
     url: 'https://gato.andresmorales.com.co',
     icon: { kind: 'lucide', Icon: Cat },
   },
   {
-    label: 'Barriotech',
+    labelKey: 'barriotechLabel',
     url: 'https://barriotech.com.co',
     icon: { kind: 'img', src: '/brands/barriotech.png', alt: 'Barriotech' },
   },
   {
-    label: 'LinkedIn',
+    labelKey: 'linkedinLabel',
     url: 'https://www.linkedin.com/in/andresmoralesc1/',
     icon: { kind: 'img', src: '/brands/linkedin.svg', alt: 'LinkedIn' },
   },
   {
-    label: 'Email',
+    labelKey: 'emailLabel',
     url: 'mailto:info@andresmorales.com.co',
     icon: { kind: 'lucide', Icon: Mail },
   },
   {
-    label: 'Instagram',
+    labelKey: 'instagramLabel',
     url: 'https://www.instagram.com/andres_morales_automation',
     icon: { kind: 'img', src: '/brands/instagram.svg', alt: 'Instagram' },
   },
   {
-    label: 'Facebook',
+    labelKey: 'facebookLabel',
     url: 'https://www.facebook.com/andresmoralesautomation',
     icon: { kind: 'img', src: '/brands/facebook.svg', alt: 'Facebook' },
   },
