@@ -4,7 +4,9 @@
 
 @layer base {
   :root {
-    color-scheme: light;
+    /* Force light UA scheme so form controls / scrollbars match the
+       page even on a dark-OS device. Removes the auto-flip to #15110d. */
+    color-scheme: light only;
   }
 
   html,
@@ -70,17 +72,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html,
-  body {
-    background-color: #15110d;
-    color: #F8F5F4;
-  }
-  body {
-    background-image:
-      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249, 110, 3, 0.14) 0%, transparent 60%);
   }
 }

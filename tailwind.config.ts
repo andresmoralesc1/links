@@ -1,7 +1,12 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: 'media',
+  darkMode: 'class',
+  // Note: this site intentionally does not adapt to OS dark mode. The user
+  // wants a clean white background matching andresmorales.com.co's line.
+  // `color-scheme: light only` in globals.css forces light UA scheme on
+  // dark-OS devices. The dark: variants below are kept dormant so a
+  // future opt-in toggle could enable them without rewriting components.
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
