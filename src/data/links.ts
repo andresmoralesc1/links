@@ -1,4 +1,5 @@
 import {
+  Briefcase,
   Cat,
   Globe,
   Mail,
@@ -76,7 +77,7 @@ export const links: LinkItem[] = [
   {
     labelKey: 'portfolioLabel',
     url: `https://andresmorales.com.co/portfolio${UTM}`,
-    icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Portafolio' },
+    icon: { kind: 'lucide', Icon: Briefcase },
   },
   {
     labelKey: 'gatoLabel',

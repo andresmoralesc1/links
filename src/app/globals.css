@@ -9,7 +9,7 @@
 
   html,
   body {
-    background-color: theme('colors.background');
+    background-color: #ffffff;
     color: theme('colors.secondary');
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -17,9 +17,10 @@
   }
 
   body {
+    /* Single subtle orange wash at the top — enough brand presence to
+       anchor the cream-era WP look without competing with the cards. */
     background-image:
-      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249, 110, 3, 0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(75, 79, 88, 0.06) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(249, 110, 3, 0.06) 0%, transparent 60%);
     background-attachment: fixed;
     min-height: 100dvh;
   }
@@ -80,7 +81,6 @@
   }
   body {
     background-image:
-      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249, 110, 3, 0.14) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(75, 79, 88, 0.14) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249, 110, 3, 0.14) 0%, transparent 60%);
   }
 }
