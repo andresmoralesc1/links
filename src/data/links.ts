@@ -36,20 +36,32 @@ export type LinkItem = {
   url: string;
   icon: LinkIcon;
   highlight?: boolean;
+  whatsapp?: boolean;
 };
 
 export const profile: Profile = {
   name: 'Andrés Morales',
-  bio: 'Desarrollador & emprendedor digital',
+  bio: 'Automatización de procesos e IA para e-commerce',
   avatar: '/avatar.jpg',
 };
 
 export const links: LinkItem[] = [
   {
-    label: 'Portafolio',
+    label: 'Ver Casos & Automatizaciones',
     url: 'https://andresmorales.com.co/portfolio',
     icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Andrés Morales' },
     highlight: true,
+  },
+  {
+    label: 'Hablar por WhatsApp',
+    url: 'https://wa.me/573245425387?text=Hola%20Andr%C3%A9s%2C%20vi%20tu%20QR%20y...',
+    icon: { kind: 'img', src: '/brands/whatsapp.svg', alt: 'WhatsApp' },
+    whatsapp: true,
+  },
+  {
+    label: 'Automatizaciones',
+    url: 'https://n8n.andresmorales.com.co',
+    icon: { kind: 'img', src: '/brands/n8n.svg', alt: 'n8n' },
   },
   {
     label: 'El Gato Colectivo',
@@ -62,19 +74,9 @@ export const links: LinkItem[] = [
     icon: { kind: 'img', src: '/brands/barriotech.png', alt: 'Barriotech' },
   },
   {
-    label: 'Automatizaciones',
-    url: 'https://n8n.andresmorales.com.co',
-    icon: { kind: 'img', src: '/brands/n8n.svg', alt: 'n8n' },
-  },
-  {
     label: 'LinkedIn',
     url: 'https://www.linkedin.com/in/andresmoralesc1/',
     icon: { kind: 'img', src: '/brands/linkedin.svg', alt: 'LinkedIn' },
-  },
-  {
-    label: 'WhatsApp',
-    url: 'https://wa.me/573245425387',
-    icon: { kind: 'img', src: '/brands/whatsapp.svg', alt: 'WhatsApp' },
   },
   {
     label: 'Email',

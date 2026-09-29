@@ -24,14 +24,20 @@ export function LinkCard({ item, index }: Props) {
         'ease-out will-change-transform hover:-translate-y-0.5 hover:shadow-md ' +
         (item.highlight
           ? 'bg-accent text-secondary border-transparent hover:bg-accent/90'
-          : 'bg-white text-secondary border-black/10 hover:border-accent/40 hover:bg-accent/[0.02]')
+          : item.whatsapp
+            ? 'bg-[#25D366] text-white border-transparent hover:bg-[#1ebe57]'
+            : 'bg-white text-secondary border-black/10 hover:border-accent/40 hover:bg-accent/[0.02]')
       }
       style={animationStyle}
     >
       <span
         className={
           'inline-flex items-center justify-center w-10 h-10 rounded-xl shrink-0 overflow-hidden ' +
-          (item.highlight ? 'bg-secondary/10' : 'bg-accent/8')
+          (item.highlight
+            ? 'bg-secondary/10'
+            : item.whatsapp
+              ? 'bg-white/20'
+              : 'bg-accent/8')
         }
       >
         {item.icon.kind === 'img' ? (
