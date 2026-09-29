@@ -14,6 +14,11 @@ import type { MessageKey } from '@/i18n/messages';
  * - `icon.kind === 'lucide'` — a lucide-react component. Used as a fallback
  *   when we don't have a brand mark (e.g. Cat glyph for El Gato Colectivo,
  *   envelope for Email).
+ *
+ * External URLs carry `?utm_source=linkinbio` so analytics can attribute
+ * clicks back to the QR scan / social bio. The brief route (/brief) is
+ * internal so it has no UTM — mailto: likewise, since mail clients ignore
+ * query params.
  */
 export type BrandIcon = {
   kind: 'img';
@@ -42,6 +47,8 @@ export type LinkItem = {
   whatsapp?: boolean;
 };
 
+const UTM = '?utm_source=linkinbio';
+
 export const profile: Profile = {
   nameKey: 'profileName',
   bioKey: 'bio',
@@ -51,13 +58,13 @@ export const profile: Profile = {
 export const links: LinkItem[] = [
   {
     labelKey: 'whatsappLabel',
-    url: 'https://wa.me/573245425387?text=Hola%20Andr%C3%A9s%2C%20vi%20tu%20QR%20y...',
+    url: `https://wa.me/573245425387?text=Hola%20Andr%C3%A9s%2C%20vi%20tu%20QR%20y...${UTM}`,
     icon: { kind: 'img', src: '/brands/whatsapp.svg', alt: 'WhatsApp' },
     whatsapp: true,
   },
   {
     labelKey: 'landingLabel',
-    url: 'https://andresmorales.com.co',
+    url: `https://andresmorales.com.co${UTM}`,
     icon: { kind: 'lucide', Icon: Globe },
   },
   {
@@ -68,22 +75,22 @@ export const links: LinkItem[] = [
   },
   {
     labelKey: 'portfolioLabel',
-    url: 'https://andresmorales.com.co/portfolio',
+    url: `https://andresmorales.com.co/portfolio${UTM}`,
     icon: { kind: 'img', src: '/brands/portfolio.png', alt: 'Portafolio' },
   },
   {
     labelKey: 'gatoLabel',
-    url: 'https://gato.andresmorales.com.co',
+    url: `https://gato.andresmorales.com.co${UTM}`,
     icon: { kind: 'lucide', Icon: Cat },
   },
   {
     labelKey: 'barriotechLabel',
-    url: 'https://barriotech.com.co',
+    url: `https://barriotech.com.co${UTM}`,
     icon: { kind: 'img', src: '/brands/barriotech.png', alt: 'Barriotech' },
   },
   {
     labelKey: 'linkedinLabel',
-    url: 'https://www.linkedin.com/in/andresmoralesc1/',
+    url: `https://www.linkedin.com/in/andresmoralesc1/${UTM}`,
     icon: { kind: 'img', src: '/brands/linkedin.svg', alt: 'LinkedIn' },
   },
   {
@@ -93,12 +100,12 @@ export const links: LinkItem[] = [
   },
   {
     labelKey: 'instagramLabel',
-    url: 'https://www.instagram.com/andres_morales_automation',
+    url: `https://www.instagram.com/andres_morales_automation${UTM}`,
     icon: { kind: 'img', src: '/brands/instagram.svg', alt: 'Instagram' },
   },
   {
     labelKey: 'facebookLabel',
-    url: 'https://www.facebook.com/andresmoralesautomation',
+    url: `https://www.facebook.com/andresmoralesautomation${UTM}`,
     icon: { kind: 'img', src: '/brands/facebook.svg', alt: 'Facebook' },
   },
 ];

@@ -11,11 +11,11 @@ export default function Page() {
   return (
     <div className="relative">
       <ParticlesBackground id="links-particles" variant="soft" />
-      <main className="relative z-10 mx-auto w-full max-w-[480px] px-8 pt-12 pb-16 md:px-12 md:pt-16">
+      <main className="relative z-10 mx-auto w-full max-w-[480px] px-8 pt-12 pb-16 pt-safe md:px-12 md:pt-16 pb-safe">
         <Hero />
         <LinkList />
         <LocaleSwitcher />
-        <footer className="mt-3 text-center text-xs text-secondary/40">
+        <footer className="mt-3 text-center text-xs text-secondary/40 dark:text-[#F8F5F4]/40">
           {t('footer')}
         </footer>
       </main>

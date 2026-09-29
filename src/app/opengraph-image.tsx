@@ -1,18 +1,21 @@
 import { ImageResponse } from 'next/og';
+import { cookies } from 'next/headers';
 import { profile } from '@/data/links';
-import { messages, defaultLocale } from '@/i18n/messages';
+import { messages, defaultLocale, isLocale } from '@/i18n/messages';
 
 export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const m = messages[defaultLocale];
-const name = m[profile.nameKey];
-const bio = m[profile.bioKey];
-
-export const alt = `${name} — Links`;
-
 export default async function OpengraphImage() {
+  const store = await cookies();
+  const cookieLocale = store.get('links.locale')?.value;
+  const locale = isLocale(cookieLocale) ? cookieLocale : defaultLocale;
+  const m = messages[locale];
+  const name = m[profile.nameKey];
+  const bio = m[profile.bioKey];
+  const alt = `${name} — Links`;
+
   // Inter font fetch disabled: the gstatic CDN URL hash used here (v18) now
   // returns HTML (404 page) and crashes satori with "Unsupported OpenType
   // signature". The page body uses next/font which handles Inter cleanly; the
@@ -85,6 +88,6 @@ export default async function OpengraphImage() {
         </div>
       </div>
     ),
-    { ...size, fonts },
+    { ...size, fonts, alt },
   );
 }

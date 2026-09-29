@@ -9,7 +9,7 @@ export function LocaleSwitcher() {
   return (
     <div
       role="group"
-      aria-label="Cambiar idioma"
+      aria-label="Idioma"
       className="mt-6 flex items-center justify-center gap-2"
     >
       {locales.map((code: Locale) => {
@@ -24,10 +24,12 @@ export function LocaleSwitcher() {
             aria-label={meta.label}
             title={meta.label}
             className={
-              'inline-flex h-9 w-9 items-center justify-center rounded-full text-lg ' +
+              'inline-flex h-11 w-11 items-center justify-center rounded-full text-lg ' +
               'transition-transform duration-150 ' +
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ' +
+              'focus-visible:ring-offset-background dark:focus-visible:ring-offset-[#15110d] ' +
               (active
-                ? 'scale-110 ring-2 ring-accent ring-offset-2 ring-offset-background'
+                ? 'scale-110 ring-2 ring-accent ring-offset-2 ring-offset-background dark:ring-offset-[#15110d]'
                 : 'opacity-60 hover:opacity-100 hover:scale-105')
             }
           >

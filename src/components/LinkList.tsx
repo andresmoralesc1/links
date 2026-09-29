@@ -10,6 +10,7 @@ export function LinkList() {
     <nav
       aria-label={t('navAria')}
       className="flex flex-col gap-3 w-full"
+      role="navigation"
     >
       {links.map((item, i) => (
         <LinkCard key={item.url} item={item} index={i} />

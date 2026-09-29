@@ -5,24 +5,28 @@ import { useEffect, useState } from 'react';
 /*
   ParticlesBackground — orange ambient particles decoration.
 
-  Source: copied from /home/telchar/andresmorales-nextjs/components/particles-background.tsx
-  (the andresmorales.com.co Elementor-derived particles config). We use the
   "soft" variant — 60 particles, opacity 0.15–0.35, no hover, disabled on
-  viewports < 768 px — so the background reads as ambient texture on the
-  link-in-bio card without competing with the AVATAR and the link list.
+  viewports < `disableBelow` so the background reads as ambient texture on
+  the link-in-bio card without competing with the AVATAR and the link list.
+  On mobile the script is never loaded — matchMedia check gates the fetch.
 */
 
 type Variant = 'dark' | 'cream' | 'soft';
+
+type Props = {
+  id?: string;
+  variant?: Variant;
+  disableBelow?: number;
+};
 
 export function ParticlesBackground({
   id = 'allmylinks-particles',
   variant = 'soft',
   disableBelow = 768,
-}: {
-  id?: string;
-  variant?: Variant;
-  disableBelow?: number;
-}) {
+}: Props) {
+  // Default true (server renders placeholder div). On client mount we check
+  // the media query: if viewports < disableBelow, set to false and never
+  // load the particles script. Saves ~30KB JS parse on every mobile visit.
   const [shouldRun, setShouldRun] = useState(true);
 
   useEffect(() => {
@@ -142,7 +146,17 @@ export function ParticlesBackground({
     return () => {
       mounted = false;
     };
-  }, [id, variant]);
+  }, [id, variant, shouldRun]);
 
-  return <div id={id} className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true" />;
+  // Hide the canvas placeholder entirely on viewports where particles won't run.
+  // Use a CSS media query (no JS needed) so the element never paints at all on
+  // mobile — avoids the brief moment where the bg div is visible before
+  // shouldRun flips to false.
+  return (
+    <div
+      id={id}
+      aria-hidden="true"
+      className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
+    />
+  );
 }

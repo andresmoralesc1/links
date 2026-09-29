@@ -41,11 +41,12 @@ export type MessageKey =
   | 'fieldDescripcionPlaceholder'
   | 'briefSubmit'
   | 'briefHelp'
-  | 'briefMailSubject';
+  | 'briefMailSubject'
+  | 'briefSubmitting';
 
 export const messages: Record<Locale, Record<MessageKey, string>> = {
   es: {
-    bio: 'Automatización de procesos e IA para e-commerce',
+    bio: 'Automatización de procesos e IA para negocios',
     profileName: 'Andrés Morales',
     footer: 'Hecho con ❤ en Colombia',
     navAria: 'Enlaces de Andrés Morales',
@@ -80,9 +81,10 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
     briefSubmit: 'Enviar brief →',
     briefHelp: 'Se abrirá tu app de correo con el brief listo para enviar.',
     briefMailSubject: 'Nuevo Brief — andresmorales.com.co',
+    briefSubmitting: 'Enviando…',
   },
   en: {
-    bio: 'Process automation & AI for e-commerce',
+    bio: 'Process automation & AI for business',
     profileName: 'Andrés Morales',
     footer: 'Made with ❤ in Colombia',
     navAria: "Andrés Morales's links",
@@ -117,9 +119,10 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
     briefSubmit: 'Send brief →',
     briefHelp: 'Your mail app will open with the brief ready to send.',
     briefMailSubject: 'New Brief — andresmorales.com.co',
+    briefSubmitting: 'Sending…',
   },
   pt: {
-    bio: 'Automação de processos e IA para e-commerce',
+    bio: 'Automação de processos e IA para negócios',
     profileName: 'Andrés Morales',
     footer: 'Feito com ❤ na Colômbia',
     navAria: 'Links de Andrés Morales',
@@ -154,6 +157,7 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
     briefSubmit: 'Enviar brief →',
     briefHelp: 'Seu app de e-mail abrirá com o brief pronto para enviar.',
     briefMailSubject: 'Novo Brief — andresmorales.com.co',
+    briefSubmitting: 'Enviando…',
   },
 };
 

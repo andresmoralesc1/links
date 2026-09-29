@@ -30,10 +30,10 @@ export function Hero() {
           />
         </div>
       </div>
-      <h1 className="text-2xl font-bold tracking-tight text-secondary">
+      <h1 className="text-2xl font-bold tracking-tight text-secondary dark:text-[#F8F5F4]">
         {t(profile.nameKey)}
       </h1>
-      <p className="mt-1.5 text-sm text-secondary/70">{t(profile.bioKey)}</p>
+      <p className="mt-1.5 text-sm text-secondary/70 dark:text-[#F8F5F4]/70">{t(profile.bioKey)}</p>
     </header>
   );
 }
