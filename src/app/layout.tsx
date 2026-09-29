@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { cookies } from 'next/headers';
 import './globals.css';
 import { Providers } from './providers';
-import { messages, defaultLocale } from '@/i18n/messages';
+import { messages, defaultLocale, isLocale } from '@/i18n/messages';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
@@ -33,9 +34,12 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const store = await cookies();
+  const cookieLocale = store.get('links.locale')?.value;
+  const lang = isLocale(cookieLocale) ? cookieLocale : defaultLocale;
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang={lang} className={inter.variable}>
       <body className="font-sans">
         <Providers>{children}</Providers>
       </body>

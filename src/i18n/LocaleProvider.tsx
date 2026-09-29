@@ -26,28 +26,50 @@ type LocaleContextValue = {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-const STORAGE_KEY = 'links.locale';
+const COOKIE_NAME = 'links.locale';
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
+
+function readCookieLocale(): Locale | null {
+  if (typeof document === 'undefined') return null;
+  const match = document.cookie.match(/(?:^|;\s*)links\.locale=([a-z]{2})/);
+  if (match && isLocale(match[1])) return match[1];
+  return null;
+}
+
+function detectLocale(): Locale | null {
+  const stored = readCookieLocale();
+  if (stored) return stored;
+  // First-visit heuristic: trust the browser language if we support it.
+  if (typeof navigator !== 'undefined') {
+    const lang = navigator.language?.split('-')[0];
+    if (isLocale(lang)) return lang;
+  }
+  return null;
+}
+
+function writeCookie(locale: Locale) {
+  if (typeof document === 'undefined') return;
+  // SameSite=Lax so the cookie ships with top-level navigations from
+  // social previews. Path=/ so the server-side layout can read it on any
+  // route (incl. /brief).
+  document.cookie = `${COOKIE_NAME}=${locale}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
+}
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  // Default to `es` for SSR; hydrate from localStorage on mount.
+  // Default to `es` for SSR; client hydrates from cookie / navigator.
   const [locale, setLocaleState] = useState<Locale>(defaultLocale);
 
   useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (isLocale(stored)) setLocaleState(stored);
-    } catch {
-      /* localStorage unavailable (private mode, etc.) — keep default */
+    const detected = detectLocale();
+    if (detected && detected !== defaultLocale) {
+      setLocaleState(detected);
+      writeCookie(detected);
     }
   }, []);
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* ignore */
-    }
+    writeCookie(next);
   }, []);
 
   const t = useCallback(

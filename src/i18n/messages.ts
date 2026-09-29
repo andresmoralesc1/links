@@ -3,8 +3,8 @@ export const locales = ['es', 'en', 'pt'] as const;
 export type Locale = (typeof locales)[number];
 
 export const localeMeta: Record<Locale, { flag: string; label: string }> = {
-  es: { flag: '🇪🇸', label: 'Español' },
-  en: { flag: '🇬🇧', label: 'English' },
+  es: { flag: '🇨🇴', label: 'Español' },
+  en: { flag: '🇺🇸', label: 'English' },
   pt: { flag: '🇧🇷', label: 'Português' },
 };
 
@@ -40,7 +40,8 @@ export type MessageKey =
   | 'fieldDescripcion'
   | 'fieldDescripcionPlaceholder'
   | 'briefSubmit'
-  | 'briefHelp';
+  | 'briefHelp'
+  | 'briefMailSubject';
 
 export const messages: Record<Locale, Record<MessageKey, string>> = {
   es: {
@@ -78,6 +79,7 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
       '¿Qué problema quieres resolver? ¿Qué resultado esperas?',
     briefSubmit: 'Enviar brief →',
     briefHelp: 'Se abrirá tu app de correo con el brief listo para enviar.',
+    briefMailSubject: 'Nuevo Brief — andresmorales.com.co',
   },
   en: {
     bio: 'Process automation & AI for e-commerce',
@@ -114,6 +116,7 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
       'What problem are you trying to solve? What outcome do you expect?',
     briefSubmit: 'Send brief →',
     briefHelp: 'Your mail app will open with the brief ready to send.',
+    briefMailSubject: 'New Brief — andresmorales.com.co',
   },
   pt: {
     bio: 'Automação de processos e IA para e-commerce',
@@ -150,6 +153,7 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
       'Qual problema você quer resolver? Que resultado espera?',
     briefSubmit: 'Enviar brief →',
     briefHelp: 'Seu app de e-mail abrirá com o brief pronto para enviar.',
+    briefMailSubject: 'Novo Brief — andresmorales.com.co',
   },
 };
 

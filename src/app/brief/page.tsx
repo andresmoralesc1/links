@@ -3,9 +3,12 @@
 import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { useLocale } from '@/i18n/LocaleProvider';
+import { localeMeta } from '@/i18n/messages';
 
 export default function BriefPage() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
+  const mailtoSubject = encodeURIComponent(t('briefMailSubject'));
+  const action = `mailto:info@andresmorales.com.co?subject=${mailtoSubject}`;
 
   return (
     <div className="relative">
@@ -27,11 +30,12 @@ export default function BriefPage() {
         </header>
 
         <form
-          action="mailto:info@andresmorales.com.co"
+          action={action}
           method="post"
           encType="text/plain"
           className="flex flex-col gap-4 rounded-2xl border border-black/10 bg-white p-6 shadow-sm"
         >
+          <input type="hidden" name="Idioma" value={`${locale} (${localeMeta[locale].label})`} />
           <Field name={t('fieldNombre')} formName="Nombre" required />
           <Field name={t('fieldEmail')} formName="Email" type="email" required />
           <Field
