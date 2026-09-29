@@ -34,18 +34,22 @@ export function LinkCard({ item, index }: Props) {
       ? 'bg-[#25D366] text-secondary border-transparent hover:bg-[#1ebe57] focus-visible:bg-[#1ebe57]'
       : 'bg-white dark:bg-[#25201c] text-secondary dark:text-[#F8F5F4] border-black/10 dark:border-white/10 hover:border-accent/40 hover:bg-accent/[0.02] focus-visible:border-accent/60';
 
+  // Icon container color: subtle, theme-aware. WhatsApp gets a white inner
+  // "app icon" style so the colored logo reads cleanly. Highlight gets an
+  // accent-tinted container that pairs with the orange border ring.
+  // Default cards get a soft gray that flatters both monochrome and
+  // colored brand icons.
   const iconBgClass = item.highlight
     ? 'bg-accent/12 dark:bg-accent/20'
     : item.whatsapp
-      ? 'bg-secondary/15'
-      : 'bg-accent/8 dark:bg-accent/15';
+      ? 'bg-white'
+      : 'bg-black/[0.04] dark:bg-white/[0.04]';
 
-  // Brand icons are simpleicons-monochrome-black; only the whatsapp card
-  // (dark text on bright green) needs them inverted to stay legible. The
-  // highlight keeps its native black icons against the accent-tinted inner bg.
-  const iconFilter = item.whatsapp
-    ? '[filter:brightness(0)_invert(1)]'
-    : '';
+  // No color filters — all brand icons (whatsapp, linkedin, facebook,
+  // instagram, barriotech, gato) ship as colored assets that should
+  // render as-is. The previous invert trick was a hack for monochrome
+  // simpleicons; we now use the proper colored variants.
+  const iconFilter = '';
 
   const arrowClass = item.highlight
     ? 'opacity-80'

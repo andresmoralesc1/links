@@ -1,9 +1,7 @@
 import {
   Briefcase,
-  Cat,
   Globe,
   Mail,
-  MapPin,
   Sparkles,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -83,12 +81,12 @@ export const links: LinkItem[] = [
   {
     labelKey: 'gatoLabel',
     url: `https://gato.andresmorales.com.co${UTM}`,
-    icon: { kind: 'lucide', Icon: Cat },
+    icon: { kind: 'img', src: '/brands/gato.png', alt: 'El Gato Colectivo' },
   },
   {
     labelKey: 'barriotechLabel',
     url: `https://barriotech.com.co${UTM}`,
-    icon: { kind: 'lucide', Icon: MapPin },
+    icon: { kind: 'img', src: '/brands/barriotech.png', alt: 'Barriotech' },
   },
   {
     labelKey: 'linkedinLabel',

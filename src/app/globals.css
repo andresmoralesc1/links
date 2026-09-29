@@ -11,7 +11,9 @@
 
   html,
   body {
-    background-color: #ffffff;
+    /* Cream wash from andresmorales.com.co's WP palette — anchors the
+       brand line and provides gentle contrast for white cards. */
+    background-color: #F8F5F4;
     color: theme('colors.secondary');
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -19,10 +21,9 @@
   }
 
   body {
-    /* Single subtle orange wash at the top — enough brand presence to
-       anchor the cream-era WP look without competing with the cards. */
     background-image:
-      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(249, 110, 3, 0.06) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(249, 110, 3, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(75, 79, 88, 0.08) 0%, transparent 60%);
     background-attachment: fixed;
     min-height: 100dvh;
   }
