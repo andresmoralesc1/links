@@ -126,6 +126,13 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
     briefHelp: 'Your mail app will open with the brief ready to send.',
     briefMailSubject: 'New Brief — andresmorales.com.co',
     briefSubmitting: 'Sending…',
+    notFoundTitle: 'Page not found',
+    notFoundBody:
+      "The link you followed doesn't exist or was moved. Go back home to find what you're looking for.",
+    notFoundHome: '← Back to home',
+    errorTitle: 'Something went wrong',
+    errorBody: 'An unexpected error occurred. Try again or go back home.',
+    errorRetry: 'Retry',
   },
   pt: {
     bio: 'Automação de processos e IA para negócios',
