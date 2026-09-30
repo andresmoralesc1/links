@@ -171,14 +171,14 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
     briefHelp: 'Seu app de e-mail abrirá com o brief pronto para enviar.',
     briefMailSubject: 'Novo Brief — andresmorales.com.co',
     briefSubmitting: 'Enviando…',
-    notFoundTitle: 'Página no encontrada',
+    notFoundTitle: 'Página não encontrada',
     notFoundBody:
-      'El enlace que seguiste no existe o se movió. Vuelve al inicio para encontrar lo que buscas.',
-    notFoundHome: '← Volver al inicio',
-    errorTitle: 'Algo salió mal',
+      'O link que você seguiu não existe ou foi movido. Volte ao início para encontrar o que procura.',
+    notFoundHome: '← Voltar ao início',
+    errorTitle: 'Algo deu errado',
     errorBody:
-      'Ocurrió un error inesperado. Inténtalo de nuevo o vuelve al inicio.',
-    errorRetry: 'Reintentar',
+      'Ocorreu um erro inesperado. Tente novamente ou volte ao início.',
+    errorRetry: 'Tentar novamente',
   },
 };
 
