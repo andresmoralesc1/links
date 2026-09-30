@@ -9,11 +9,11 @@ import { messages, defaultLocale, isLocale } from '@/i18n/messages';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
-// Analytics: opt-in via env vars. Set these in Vercel → Project Settings →
-// Environment Variables to activate.
+// Analytics: env vars override the hardcoded fallbacks. Set these in Vercel
+// → Project Settings → Environment Variables to override without code change.
 //   NEXT_PUBLIC_GA_ID                       → Google Analytics 4 measurement ID
 //   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION   → Google Search Console verification token
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-10Y68EY9G9';
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined;
 
