@@ -42,7 +42,13 @@ export type MessageKey =
   | 'briefSubmit'
   | 'briefHelp'
   | 'briefMailSubject'
-  | 'briefSubmitting';
+  | 'briefSubmitting'
+  | 'notFoundTitle'
+  | 'notFoundBody'
+  | 'notFoundHome'
+  | 'errorTitle'
+  | 'errorBody'
+  | 'errorRetry';
 
 export const messages: Record<Locale, Record<MessageKey, string>> = {
   es: {
@@ -158,6 +164,14 @@ export const messages: Record<Locale, Record<MessageKey, string>> = {
     briefHelp: 'Seu app de e-mail abrirá com o brief pronto para enviar.',
     briefMailSubject: 'Novo Brief — andresmorales.com.co',
     briefSubmitting: 'Enviando…',
+    notFoundTitle: 'Página no encontrada',
+    notFoundBody:
+      'El enlace que seguiste no existe o se movió. Vuelve al inicio para encontrar lo que buscas.',
+    notFoundHome: '← Volver al inicio',
+    errorTitle: 'Algo salió mal',
+    errorBody:
+      'Ocurrió un error inesperado. Inténtalo de nuevo o vuelve al inicio.',
+    errorRetry: 'Reintentar',
   },
 };
 

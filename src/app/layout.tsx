@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import { cookies } from 'next/headers';
 import './globals.css';
 import { Providers } from './providers';
@@ -38,7 +39,18 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
     apple: '/avatar.jpg',
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    // /brief is a private form — noindex it explicitly so Google doesn't try to crawl.
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -49,6 +61,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang={lang} className={inter.variable}>
       <body className="font-sans">
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
